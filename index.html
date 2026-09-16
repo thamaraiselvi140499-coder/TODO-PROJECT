@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My To-Do App</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="header-top">
+    <h1>My Tasks</h1>
+
+    <button id="darkModeBtn" onclick="toggleDarkMode()">
+        🌙
+    </button>
+</div>
+            <p>Organize your day and stay productive 🚀</p>
+        </div>
+
+        <!-- Add Task -->
+        <div class="add-task">
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="What do you need to do?"
+            >
+
+           <input type="date" id="taskDate">
+
+<select id="taskPriority">
+    <option value="low">🟢 Low</option>
+    <option value="medium" selected>🟡 Medium</option>
+    <option value="high">🔴 High</option>
+</select>
+
+<select id="taskCategory">
+    <option value="work">💼 Work</option>
+    <option value="study">📚 Study</option>
+    <option value="personal">🏠 Personal</option>
+    <option value="shopping">🛒 Shopping</option>
+</select>
+
+<button onclick="addTask()">Add Task</button>
+        </div>
+
+        <!-- Search -->
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search tasks..."
+            onkeyup="displayTasks()"
+        >
+
+        <!-- Filter Buttons -->
+        <div class="filters">
+
+            <button onclick="filterTasks('all')">
+                All
+            </button>
+
+            <button onclick="filterTasks('pending')">
+                Pending
+            </button>
+
+            <button onclick="filterTasks('completed')">
+                Completed
+            </button>
+
+        </div>
+
+        <div class="category-filter">
+    <label for="categoryFilter">Category:</label>
+
+    <select id="categoryFilter" onchange="filterByCategory()">
+        <option value="all">All Categories</option>
+        <option value="work">💼 Work</option>
+        <option value="study">📚 Study</option>
+        <option value="personal">🏠 Personal</option>
+        <option value="shopping">🛒 Shopping</option>
+    </select>
+</div>
+
+<!-- Statistics -->
+<div class="statistics">
+    <div class="stat-box">
+        <span>📋 Total</span>
+        <strong id="totalCount">0</strong>
+    </div>
+
+    <div class="stat-box">
+        <span>⏳ Pending</span>
+        <strong id="pendingCount">0</strong>
+    </div>
+
+    <div class="stat-box">
+        <span>✅ Completed</span>
+        <strong id="completedCount">0</strong>
+    </div>
+
+    <div class="stat-box">
+        <span>📊 Progress</span>
+        <strong id="progressPercent">0%</strong>
+    </div>
+</div>
+
+        <div class="sort-section">
+    <label for="sortTasks">Sort By:</label>
+
+    <select id="sortTasks" onchange="sortTasks()">
+        <option value="priority">Priority</option>
+        <option value="date">Due Date</option>
+        <option value="name">Task Name</option>
+    </select>
+</div>
+
+<button class="clear-all-btn" onclick="clearAllTasks()">
+    🗑️ Clear All Tasks
+</button>
+
+        <!-- Task List -->
+        <div id="taskList"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
